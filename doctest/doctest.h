@@ -4661,8 +4661,6 @@ namespace {
     };
 
     DOCTEST_THREAD_LOCAL std::ostringstream DebugOutputWindowReporter::oss;
-
-    DebugOutputWindowReporter g_debug_output_rep;
 #endif // DOCTEST_PLATFORM_WINDOWS
 
     // the implementation of parseFlag()
@@ -4985,6 +4983,7 @@ int Context::run() {
 
     // always use the debug output window reporter
 #ifdef DOCTEST_PLATFORM_WINDOWS
+    DebugOutputWindowReporter g_debug_output_rep;
     if(isDebuggerActive())
         p->reporters_currently_used.push_back(&g_debug_output_rep);
 #endif // DOCTEST_PLATFORM_WINDOWS
